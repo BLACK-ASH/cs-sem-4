@@ -1,0 +1,48 @@
+.login-form-container {
+  border: 1px solid teal;
+  border-radius: 1rem;
+  padding: 1rem;
+  width: 50vh;
+  height: 70vh;
+  margin: auto;
+  background: aliceblue;
+  box-shadow: 4px 4px teal;
+}
+
+.login-header {
+  font-size: 3rem;
+  text-align: center;
+  color: teal;
+}
+
+.login-label {
+  font-weight: 700;
+  color: teal;
+  display: block;
+  margin-top: 1rem;
+}
+
+.login-input {
+  outline: none;
+  border: 1px solid teal;
+  border-radius: 4px;
+  padding: 0.5rem;
+  margin: 0.25rem 0;
+  width: 80%;
+  box-shadow: 1px 1px teal;
+  background: inherit;
+}
+
+.login-submit {
+  background: teal;
+  color: aliceblue;
+  outline: none;
+  padding: 0.5rem 1rem;
+  border: 1px solid teal;
+  border-radius: 0.5rem;
+  box-shadow: 2px 2px teal;
+  width: 12rem;
+  font-weight: 700;
+  font-size: 1rem;
+  margin: 1rem auto;
+}
