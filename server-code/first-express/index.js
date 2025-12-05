@@ -1,7 +1,6 @@
 import express from "express"
 import { logger } from "./middleware/looger.js";
 
-
 const port = 4000
 const app = express()
 
@@ -13,10 +12,12 @@ app.get("/", (req, res) => {
   res.send("Hello World!, From Server.")
 })
 
-app.post("/login", (req, res) => {
-  const { username, password } = req.body
-  console.log({ username, password })
-  res.status(200).send("Login SuccessFull");
+app.get("/about", (req, res) => {
+  res.send("This Is About Page")
+})
+
+app.get("/contact", (req, res) => {
+  res.send("This Is Contact Page")
 })
 
 app.listen(port, () => {
