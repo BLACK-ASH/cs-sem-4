@@ -1,0 +1,12 @@
+.header{
+  font-size:2rem;
+  color: #000;
+background: aliceblue;
+padding: 1rem;
+}
+
+.post-card{
+ border: 1px dashed black;
+ padding : 1rem;
+ margin : 1rem;
+}

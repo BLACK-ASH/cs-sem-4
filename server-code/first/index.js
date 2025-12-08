@@ -33,6 +33,8 @@ const app = http.createServer((req, res) => {
 
 })
 
+console.log(addNumber(12, 24))
+
 app.listen(4001, () => {
   console.log("Server Started At Port ", 4001)
 })

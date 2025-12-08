@@ -1,0 +1,16 @@
+<h1 class="header">Login Form</h1>
+
+<form [formGroup]="loginSchema" (ngSubmit)="handleSubmit()" >
+
+<div>
+    <label for="username">Username</label>
+<input formControlName="username" type="text" name="username" id="username">
+</div>
+
+<div>
+    <label for="password">Password</label>
+<input formControlName="password" type="text" name="password" id="password">
+</div>
+
+<button type="submit">Login </button>
+</form>
