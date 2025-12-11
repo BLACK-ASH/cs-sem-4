@@ -20,7 +20,7 @@ export class Collection {
   }
 
   findById(id) {
-    return this.datas.filter((e) => e._id === id)
+    return this.datas.filter((e) => e._id === id)[0]
   }
 
   delete(id) {
