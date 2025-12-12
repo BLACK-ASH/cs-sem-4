@@ -1,5 +1,5 @@
-import express from "express"; import { userRouter } from "./Router/user-router.js";
-import { productRouter } from "./Router/product-router.js";
+import express from "express"; import { userRouter } from "./Router/user.router.js";
+import { productRouter } from "./Router/product.router.js";
 
 const PORT = 4000;
 
