@@ -1,2 +1,30 @@
-<app-navbar />
-<router-outlet />
+<router-outlet></router-outlet>
+<h1>Hello, {{ title() }}!</h1>
+
+<section class="w-2xl mx-auto">
+  <h2 class="text-2xl font-bold">Create Post</h2>
+  <form class="space-y-2" [formGroup]="postForm">
+    <div>
+      <label class="font-bold" for="userId">User ID :</label>
+      <input class="outline-1 rounded px-2 py-1 mx-2 my-1" type="number" formControlName="userId" placeholder="userId" />
+    </div>
+    <div>
+      <label class="font-bold" for="title">Title :</label>
+      <input class="outline-1 rounded px-2 py-1 mx-2 my-1" type="text" formControlName="title" placeholder="title" />
+    </div>
+    <div>
+      <label class="font-bold" for="body">Body :</label>
+      <input class="outline-1 rounded px-2 py-1 mx-2 my-1" type="text" formControlName="body" placeholder="body" />
+    </div>
+  </form>
+  <button class="bg-blue-500 py-1 px-3 rounded m-2" (click)="sendPost()">Send Post</button>
+</section>
+
+<section class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4">
+  @for(post of posts() ; track post.id){
+  <div class="border-2 rounded p-2 m-2">
+    <h3 class="text-2xl font-bold">{{ post.title }}</h3>
+    <p>{{ post.body }}</p>
+  </div>
+  }
+</section>
