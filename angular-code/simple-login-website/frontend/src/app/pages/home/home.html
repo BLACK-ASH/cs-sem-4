@@ -1,0 +1,13 @@
+<h1>Users</h1>
+
+<div>
+    @for(users of users() ;track users._id){
+        <div class="card" >
+            <p>ID : {{users._id}}</p>
+            <p>First Name : {{users.firstName}}</p>
+            <p>Last Name : {{users.lastName}}</p>
+            <p>Email : {{users.email}}</p>
+            <p>Password : {{users.password}}</p>
+        </div>
+    }
+</div>

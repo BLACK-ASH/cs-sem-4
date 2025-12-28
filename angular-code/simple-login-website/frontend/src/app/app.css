@@ -1,0 +1,17 @@
+.navbar{
+  display: flex;
+  justify-content: space-between;
+  color: #000;
+  background: aliceblue;
+  padding: 1rem;
+}
+
+.header{
+  font-size: 2rem;
+}
+
+.nav-link{
+  list-style: none;
+  display: flex;
+  gap: 1rem;
+}
