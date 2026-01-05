@@ -4,7 +4,6 @@ import jsonwebtoken from "jsonwebtoken";
 import cors from "cors";
 import User from "./database/user.model.js";
 import connectDb from "./database/connectDb.js";
-import dotenv from "dotenv";
 
 const port = process.env.PORT || 4000;
 
@@ -12,7 +11,11 @@ const port = process.env.PORT || 4000;
 const app = express();
 app.use(express.json());
 app.use(cors());
-dotenv.config()
+
+if (process.env.NODE_ENV !== "production") {
+  await import("dotenv/config");
+}
+
 
 app.get("/", (req, res) => {
   res.send("Hello World!");

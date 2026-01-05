@@ -33,6 +33,10 @@
         </div>
       }
     </div>
+    @if(errorMessage()) {
+      <span>{{errorMessage()}}</span>
+      <br>
+    }
     <button class="login-submit" type="submit">Submit</button>
   </form>
 </div>

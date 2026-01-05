@@ -14,6 +14,8 @@ export class LoginForm {
     password: new FormControl('', [Validators.required, Validators.minLength(6)]),
   });
 
+  errorMessage = signal('');
+
   get email() {
     return this.loginForm.get('email')!;
   }
@@ -33,7 +35,7 @@ export class LoginForm {
       error: (err) => {
         // Error response
         console.log(err);
-        alert(err.error.message);
+        this.errorMessage.set(err.error.message);
       },
     });
   }

@@ -6,7 +6,7 @@ services:
     container_name: mongo
     restart: always
     ports:
-      - "27016:27017"
+      - "27017:27017"
     volumes:
       - mongo_data:/data/db
 
@@ -18,7 +18,8 @@ services:
       - "4000:4000"
     environment:
       - PORT=4000
-      - MONGO_URI=mongodb://mongo:27016/simple-login-website
+      - NODE_ENV=production
+      - MONGO_URI=mongodb://mongo:27017/simple-login-website
     depends_on:
       - mongo
 

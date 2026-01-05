@@ -11,39 +11,37 @@
         formControlName="firstName"
       />
       @if (firstName.invalid && (firstName.dirty || firstName.touched)) {
-        <div>
-          @if (firstName.hasError('required')) {
-            <span>First Name Is Reqired</span>
-          }
-          @if (firstName.hasError('minlength')) {
-            <span>First Name Must Be At Least 3 Character</span>
-          }
-        </div>
+      <div>
+        @if (firstName.hasError('required')) {
+        <span>First Name Is Reqired</span>
+        } @if (firstName.hasError('minlength')) {
+        <span>First Name Must Be At Least 3 Character</span>
+        }
+      </div>
       }
     </div>
     <div>
       <label class="login-label" for="lastName">Last Name </label>
       <input required class="login-input" type="text" name="lastName" formControlName="lastName" />
       @if (lastName.invalid && (lastName.dirty || lastName.touched)) {
-        <div>
-          @if (lastName.hasError('required')) {
-            <span>Last Name Is Reqired</span>
-          }
-          @if (lastName.hasError('minlength')) {
-            <span>Last Name Must Be At Least 3 Character</span>
-          }
-        </div>
+      <div>
+        @if (lastName.hasError('required')) {
+        <span>Last Name Is Reqired</span>
+        } @if (lastName.hasError('minlength')) {
+        <span>Last Name Must Be At Least 3 Character</span>
+        }
+      </div>
       }
     </div>
     <div>
       <label class="login-label" for="email">Email</label>
       <input required class="login-input" type="text" name="email" formControlName="email" />
       @if (email.invalid && (email.dirty || email.touched)) {
-        <div>
-          @if (email.hasError('required')) {
-            <span>Email Is Reqired</span>
-          }
-        </div>
+      <div>
+        @if (email.hasError('required')) {
+        <span>Email Is Reqired</span>
+        }
+      </div>
       }
     </div>
     <div>
@@ -56,16 +54,19 @@
         formControlName="password"
       />
       @if (password.invalid && (password.dirty || password.touched)) {
-        <div>
-          @if (password.hasError('required')) {
-            <span>Password Name Is Reqired</span>
-          }
-          @if (password.hasError('minlength')) {
-            <span>Password Name Must Be At Least 6 Character</span>
-          }
-        </div>
+      <div>
+        @if (password.hasError('required')) {
+        <span>Password Name Is Reqired</span>
+        } @if (password.hasError('minlength')) {
+        <span>Password Name Must Be At Least 6 Character</span>
+        }
+      </div>
       }
     </div>
+    @if (errorMessage()) {
+    <span>{{ errorMessage() }}</span>
+    <br>
+    }
     <button class="login-submit" type="submit">Submit</button>
   </form>
 </div>

@@ -1,4 +1,4 @@
-import { Component, inject } from '@angular/core';
+import { Component, inject, signal } from '@angular/core';
 import { FormControl, FormGroup, ReactiveFormsModule, Validators } from '@angular/forms';
 import { Register } from '../../services/register/register';
 
@@ -15,6 +15,8 @@ export class RegisterForm {
     email: new FormControl('', [Validators.required]),
     password: new FormControl('', [Validators.required, Validators.minLength(6)]),
   });
+
+  errorMessage = signal('');
 
   get firstName() {
     return this.registerForm.get('firstName')!;
@@ -35,10 +37,20 @@ export class RegisterForm {
   registerService = inject(Register);
 
   handleSubmit() {
-    this.registerService.register(this.registerForm.value).subscribe((res) => {
-      console.log(res);
-      alert(res.message);
-    });
+    this.registerService.register(this.registerForm.value).subscribe(
+      {
+        next: (data) => {
+          // Success response
+          console.log(data);
+          alert(data.message);
+        },
+        error: (err) => {
+          // Error response
+          console.log(err);
+          this.errorMessage.set(err.error.message);
+        },
+      }
+    );
     this.registerForm.reset();
   }
 }
