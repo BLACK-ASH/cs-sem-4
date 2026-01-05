@@ -17,10 +17,18 @@ export class LoginForm {
   loginService = inject(Login)
 
    handleSubmit() {
-    this.loginService.login(this.loginForm.value ).subscribe(res => {
-      console.log(res);
-      alert(res.message)
-    })
-    this.loginForm.reset()
+    this.loginService.login(this.loginForm.value ).subscribe({
+    next: (data) => {
+      // Success response
+      console.log(data);
+      alert(data.message);
+    },
+    error: (err) => {
+      // Error response
+      console.log(err);
+      alert(err.error.message);
+    },
+  });
   }
+
 }

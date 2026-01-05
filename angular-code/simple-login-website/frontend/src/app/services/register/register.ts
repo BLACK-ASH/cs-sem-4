@@ -1,6 +1,7 @@
 import { HttpClient } from '@angular/common/http';
 import { inject, Injectable } from '@angular/core';
 import { Observable } from 'rxjs';
+import { environment } from '../../../environments/environment';
 
 export type RegisterResponseType = {
   message: string
@@ -15,7 +16,7 @@ export type RegisterResponseType = {
 export class Register {
  http = inject(HttpClient) 
 
- url = "http://localhost:3000/register"
+ url = environment.apiUrl + "/register"
  register(data: any): Observable<RegisterResponseType> {
     return this.http.post<RegisterResponseType>(this.url, data)
   }
