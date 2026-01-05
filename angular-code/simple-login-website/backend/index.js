@@ -26,13 +26,11 @@ app.post("/register", async (req, res) => {
   try {
     // If firstName is null
     if (!firstName.trim() | !firstName) {
-      return res
-        .status(400)
-        .json({
-          message: "firstName is required.",
-          payload: null,
-          token: null,
-        });
+      return res.status(400).json({
+        message: "firstName is required.",
+        payload: null,
+        token: null,
+      });
     }
 
     // If lastName is null
@@ -79,7 +77,6 @@ app.post("/register", async (req, res) => {
       payload: null,
       token: null,
     });
-
   } catch (error) {
     // If any error happen
     return res.status(500).json({
