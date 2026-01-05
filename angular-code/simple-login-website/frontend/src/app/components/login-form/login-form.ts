@@ -1,6 +1,6 @@
 import { Component, inject, signal } from '@angular/core';
-import { FormControl, FormGroup, ReactiveFormsModule } from '@angular/forms';
-import { Login} from '../../services/login/login';
+import { FormControl, FormGroup, ReactiveFormsModule, Validators } from '@angular/forms';
+import { Login } from '../../services/login/login';
 
 @Component({
   selector: 'app-login-form',
@@ -10,25 +10,31 @@ import { Login} from '../../services/login/login';
 })
 export class LoginForm {
   loginForm = new FormGroup({
-    email: new FormControl("", {nonNullable: true}),
-    password: new FormControl("", {nonNullable: true})
-  }) 
-
-  loginService = inject(Login)
-
-   handleSubmit() {
-    this.loginService.login(this.loginForm.value ).subscribe({
-    next: (data) => {
-      // Success response
-      console.log(data);
-      alert(data.message);
-    },
-    error: (err) => {
-      // Error response
-      console.log(err);
-      alert(err.error.message);
-    },
+    email: new FormControl('', [Validators.required]),
+    password: new FormControl('', [Validators.required, Validators.minLength(6)]),
   });
+
+  get email() {
+    return this.loginForm.get('email')!;
   }
 
+  get password() {
+    return this.loginForm.get('password')!;
+  }
+  loginService = inject(Login);
+
+  handleSubmit() {
+    this.loginService.login(this.loginForm.value).subscribe({
+      next: (data) => {
+        // Success response
+        console.log(data);
+        alert(data.message);
+      },
+      error: (err) => {
+        // Error response
+        console.log(err);
+        alert(err.error.message);
+      },
+    });
+  }
 }

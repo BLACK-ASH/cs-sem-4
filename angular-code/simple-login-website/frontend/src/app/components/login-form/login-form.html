@@ -1,14 +1,37 @@
 <div class="login-form-container">
   <form [formGroup]="loginForm" (ngSubmit)="handleSubmit()">
-    <h1 class="login-header">LOGIN FORM </h1>
+    <h1 class="login-header">LOGIN FORM</h1>
 
     <div>
       <label class="login-label" for="email">Email</label>
-      <input class="login-input" type="text" name="email" formControlName="email">
+      <input required class="login-input" type="text" name="email" formControlName="email" />
+      @if (email.invalid && (email.dirty || email.touched)) {
+        <div>
+          @if (email.hasError('required')) {
+            <span>Email Is Reqired</span>
+          }
+        </div>
+      }
     </div>
     <div>
       <label class="login-label" for="password">Password </label>
-      <input class="login-input" type="password" name="password" formControlName="password">
+      <input
+        required
+        class="login-input"
+        type="password"
+        name="password"
+        formControlName="password"
+      />
+      @if (password.invalid && (password.dirty || password.touched)) {
+        <div>
+          @if (password.hasError('required')) {
+            <span>Password Name Is Reqired</span>
+          }
+          @if (password.hasError('minlength')) {
+            <span>Password Name Must Be At Least 6 Character</span>
+          }
+        </div>
+      }
     </div>
     <button class="login-submit" type="submit">Submit</button>
   </form>

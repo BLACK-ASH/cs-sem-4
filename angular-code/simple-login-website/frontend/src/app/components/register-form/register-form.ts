@@ -1,5 +1,5 @@
 import { Component, inject } from '@angular/core';
-import { FormControl, FormGroup, ReactiveFormsModule } from '@angular/forms';
+import { FormControl, FormGroup, ReactiveFormsModule, Validators } from '@angular/forms';
 import { Register } from '../../services/register/register';
 
 @Component({
@@ -10,19 +10,35 @@ import { Register } from '../../services/register/register';
 })
 export class RegisterForm {
   registerForm = new FormGroup({
-    firstName: new FormControl("", { nonNullable: true }),
-    lastName: new FormControl("", { nonNullable: true }),
-    email: new FormControl("", { nonNullable: true }),
-    password: new FormControl("", { nonNullable: true })
-  })
+    firstName: new FormControl('', [Validators.required, Validators.minLength(3)]),
+    lastName: new FormControl('', [Validators.required, Validators.minLength(3)]),
+    email: new FormControl('', [Validators.required]),
+    password: new FormControl('', [Validators.required, Validators.minLength(6)]),
+  });
 
-  registerService = inject(Register)
+  get firstName() {
+    return this.registerForm.get('firstName')!;
+  }
+
+  get lastName() {
+    return this.registerForm.get('lastName')!;
+  }
+
+  get email() {
+    return this.registerForm.get('email')!;
+  }
+
+  get password() {
+    return this.registerForm.get('password')!;
+  }
+
+  registerService = inject(Register);
 
   handleSubmit() {
-    this.registerService.register(this.registerForm.value).subscribe(res => {
-      console.log(res)
-      alert(res.message)
-    })
-    this.registerForm.reset()
+    this.registerService.register(this.registerForm.value).subscribe((res) => {
+      console.log(res);
+      alert(res.message);
+    });
+    this.registerForm.reset();
   }
 }
